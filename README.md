@@ -1,5 +1,7 @@
 # qslab: Quantum Spin Liquid Laboratory
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24334571.svg)](https://doi.org/10.5281/zenodo.24334571)
+
 A Python toolkit for simulating quantum spin liquids with complementary many-body
 methods. It ships with eight executed tutorial notebooks and quizzes for every
 model, and it runs on a laptop, on all cores of one node, across many nodes
@@ -132,6 +134,26 @@ Ran, Hermele, Lee & Wen, PRL 98, 117205 (2007) · Yan, Huse & White, Science 332
 Nasu, Udagawa & Motome, PRL 113, 197205 (2014) · Rau, Lee & Kee, PRL 112, 077204 (2014) ·
 Zhu & White, PRB 92, 041105 (2015) · Carleo & Troyer, Science 355, 602 (2017) ·
 Savary & Balents, Rep. Prog. Phys. 80, 016502 (2017) · Jaklič & Prelovšek, Adv. Phys. 49, 1 (2000).
+
+## Citing qslab
+
+If qslab helps your work, please cite the software:
+
+> G. Shukla, *qslab: Quantum Spin Liquid Laboratory*, version 0.1.0 (2026). Zenodo. https://doi.org/10.5281/zenodo.24334571
+
+```bibtex
+@software{shukla_qslab_2026,
+  author    = {Shukla, Gokaran},
+  title     = {qslab: Quantum Spin Liquid Laboratory},
+  version   = {0.1.0},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24334571},
+  url       = {https://github.com/Gokaran-Shukla/qslab}
+}
+```
+
+GitHub's **"Cite this repository"** button (from `CITATION.cff`) gives the same reference in APA and BibTeX.
 
 ## License
 
