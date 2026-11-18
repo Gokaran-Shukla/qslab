@@ -1,0 +1,15 @@
+{
+  "title": "qslab: Quantum Spin Liquid Laboratory",
+  "upload_type": "software",
+  "description": "A Python toolkit for simulating quantum spin liquids with complementary many-body methods: exact diagonalisation, the exact Majorana solution of the Kitaev model with projection onto physical states, stabilizer topological entanglement entropy, partons with Gutzwiller-projected variational Monte Carlo, DMRG and neural quantum states. It covers the Kitaev, J-K-Gamma-Gamma', toric-code, kagome, triangular and square J1-J2 models, includes executed tutorial notebooks and quizzes, and runs in parallel on one node, with optional MPI and GPU.",
+  "creators": [
+    {"name": "Shukla, Gokaran", "orcid": "0000-0001-9332-3332",
+     "affiliation": "King Abdullah University of Science and Technology (KAUST)"}
+  ],
+  "license": "MIT",
+  "keywords": ["quantum spin liquid", "Kitaev model", "kagome", "toric code", "exact diagonalization",
+               "DMRG", "variational Monte Carlo", "neural quantum states", "Majorana fermions", "topological order"],
+  "related_identifiers": [
+    {"identifier": "https://github.com/Gokaran-Shukla/qslab", "relation": "isSupplementTo", "scheme": "url"}
+  ]
+}
