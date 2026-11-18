@@ -1,0 +1,72 @@
+{
+ "title": "Triangular J1-J2 Heisenberg model",
+ "intro": "",
+ "questions": [
+  {
+   "type": "mcq",
+   "question": "Ground state of the triangular J1 Heisenberg model?",
+   "options": [
+    "120-degree Neel order",
+    "ferromagnet",
+    "spin liquid",
+    "VBS"
+   ],
+   "answer": "a",
+   "explanation": "Three-sublattice 120-degree order with a strongly reduced moment, about 0.2."
+  },
+  {
+   "type": "mcq",
+   "question": "Roughly where is the J2/J1 spin-liquid window?",
+   "options": [
+    "none",
+    "1 - 2",
+    "0.5 - 0.6",
+    "0.07 - 0.15"
+   ],
+   "answer": "d",
+   "explanation": "DMRG (Zhu-White, Hu et al. 2015) and VMC; recent work favours the U(1) Dirac spin liquid."
+  },
+  {
+   "type": "numeric",
+   "question": "ED energy per site on the 12-site (3x4) torus at J2 = 0?",
+   "answer": -0.57757,
+   "tol": 2e-05,
+   "explanation": "",
+   "hint": "",
+   "code": "lat = lattice.triangular(3,4); ED(models.j1j2_triangular(lat, J2=0), 12).ground_state()[0]/12"
+  },
+  {
+   "type": "numeric",
+   "question": "Same cluster at J2 = 0.1?",
+   "answer": -0.54206,
+   "tol": 2e-05,
+   "explanation": "J2 frustrates the 120-degree state and raises the energy.",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "mcq",
+   "question": "Which momentum peaks in S(q) for 120-degree order?",
+   "options": [
+    "none",
+    "M",
+    "Gamma",
+    "K (Brillouin-zone corner)"
+   ],
+   "answer": "d",
+   "explanation": "Three-sublattice order is a K-point Bragg peak; stripe order (large J2) peaks at M."
+  },
+  {
+   "type": "mcq",
+   "question": "Why do DMRG studies use YC/XC cylinders?",
+   "options": [
+    "the MPS entanglement grows with circumference, and the orientation selects which momenta are allowed",
+    "they are faster than tori for no reason",
+    "SU(2) requires cylinders",
+    "to break time reversal"
+   ],
+   "answer": "a",
+   "explanation": "Area law: S grows linearly with width W, so the cost grows as exp(W)."
+  }
+ ]
+}

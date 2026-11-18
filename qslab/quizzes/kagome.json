@@ -1,0 +1,81 @@
+{
+ "title": "Kagome Heisenberg antiferromagnet",
+ "intro": "Corner-sharing triangles, 3 sites per unit cell.",
+ "questions": [
+  {
+   "type": "numeric",
+   "question": "Exact ground-state energy per site of the 12-site (2x2 cell) kagome torus?",
+   "answer": -0.45374,
+   "tol": 2e-05,
+   "explanation": "Small cluster; the TL value is about -0.4386 (DMRG).",
+   "hint": "",
+   "code": "lat = lattice.kagome(2,2); ED(models.kagome_heisenberg(lat), 12).ground_state()[0]/12"
+  },
+  {
+   "type": "mcq",
+   "question": "Which spinon flux pattern defines the U(1) Dirac spin liquid (Ran-Hermele-Lee-Wen)?",
+   "options": [
+    "pi through triangles, 0 through hexagons",
+    "0 through triangles, pi through hexagons",
+    "pi/2 through triangles",
+    "0 everywhere"
+   ],
+   "answer": "b",
+   "explanation": "[0, pi]: Dirac cones at the Fermi level; Gutzwiller energy ~ -0.4287 J."
+  },
+  {
+   "type": "numeric",
+   "question": "VMC energy per site of the projected U(1) Dirac spin liquid (large torus)?",
+   "answer": -0.4287,
+   "tol": 0.002,
+   "explanation": "Known value -0.42866(1); qslab gives -0.4291(9) on 108 sites.",
+   "hint": "",
+   "code": "ans = SpinonAnsatz.from_flux(lattice.kagome(6,6), {'up':0,'down':0,'hexagon':np.pi}); GutzwillerVMC(ans).run()"
+  },
+  {
+   "type": "mcq",
+   "question": "What is the classical ground-state degeneracy of the kagome AFM?",
+   "options": [
+    "Neel",
+    "extensive (any configuration with total spin 0 on every triangle)",
+    "unique 120-degree state",
+    "two-fold"
+   ],
+   "answer": "b",
+   "explanation": "Each triangle only needs S_triangle = 0: extensive degeneracy, so quantum fluctuations select the state."
+  },
+  {
+   "type": "mcq",
+   "question": "Which of these stabilises a chiral spin liquid on kagome?",
+   "options": [
+    "a staggered field",
+    "J2 = J3 ~ 0.5 or a scalar chirality term Jchi",
+    "an Ising anisotropy",
+    "a ferromagnetic J1"
+   ],
+   "answer": "b",
+   "explanation": "He-Sheng-Chen (2014), Gong et al. (2014): a Kalmeyer-Laughlin state with C = 1/2."
+  },
+  {
+   "type": "numeric",
+   "question": "Topological entanglement entropy expected for a gapped Z2 spin liquid on kagome (nats)?",
+   "answer": 0.6931,
+   "tol": 0.001,
+   "explanation": "Same anyon theory as the toric code: gamma = ln 2 (DMRG finds about 0.69).",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "mcq",
+   "question": "Why must the spinon Fermi sea be a closed shell before Gutzwiller projection?",
+   "options": [
+    "It need not be",
+    "Projection is impossible",
+    "Otherwise the projected state depends on arbitrary choices in a degenerate level",
+    "Because of SU(2)"
+   ],
+   "answer": "c",
+   "explanation": "Use twisted (antiperiodic) spinon boundary conditions or another cluster; qslab warns about open shells."
+  }
+ ]
+}

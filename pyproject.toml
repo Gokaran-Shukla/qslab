@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qslab"
+version = "0.1.0"
+description = "Quantum spin liquid laboratory: ED, Majorana, stabilizer, parton/VMC, DMRG and NQS solvers with tutorials and quizzes"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Gokaran Shukla"}]
+dependencies = ["numpy>=1.24", "scipy>=1.10", "matplotlib>=3.6"]
+keywords = ["quantum spin liquid", "Kitaev model", "kagome", "toric code", "exact diagonalization", "DMRG", "VMC", "neural quantum states"]
+
+[project.optional-dependencies]
+fast = ["numba>=0.58", "threadpoolctl"]
+mpi = ["mpi4py>=3.1"]
+gpu = ["cupy-cuda12x"]
+notebooks = ["jupyter", "nbformat", "nbclient", "ipykernel"]
+test = ["pytest"]
+all = ["numba>=0.58", "threadpoolctl", "mpi4py>=3.1", "jupyter", "pytest"]
+
+[project.scripts]
+qslab-quiz = "qslab.quiz:main"
+qslab-info = "qslab.parallel:_cli_info"
+
+[tool.setuptools]
+packages = ["qslab"]
+
+[tool.setuptools.package-data]
+qslab = ["quizzes/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

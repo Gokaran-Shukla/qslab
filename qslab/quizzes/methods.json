@@ -1,0 +1,99 @@
+{
+ "title": "Methods and diagnostics for spin liquids",
+ "intro": "ED, DMRG, partons/VMC, NQS, thermodynamics, parallel computing",
+ "questions": [
+  {
+   "type": "mcq",
+   "question": "Why can't ARPACK reliably count a 4-fold topological degeneracy with a tiny Krylov space?",
+   "options": [
+    "Lanczos generates a single vector per degenerate eigenspace from one start vector; restarts or a large Krylov space are needed",
+    "It is complex",
+    "It always can",
+    "Because of round-off"
+   ],
+   "answer": "a",
+   "explanation": "qslab uses ncv >= 40; symmetry operators then label the sectors."
+  },
+  {
+   "type": "mcq",
+   "question": "Which quantity distinguishes a gapped Z2 spin liquid from a trivial paramagnet?",
+   "options": [
+    "topological entanglement entropy gamma = ln 2",
+    "zero magnetisation",
+    "<S_i.S_j> < 0",
+    "finite gap"
+   ],
+   "answer": "a",
+   "explanation": "Area law S = alpha L - gamma; only topological order has gamma > 0."
+  },
+  {
+   "type": "mcq",
+   "question": "A smoking gun for fractionalisation in neutron scattering is",
+   "options": [
+    "a spin gap",
+    "a broad continuum in S(q, w) instead of sharp magnons",
+    "a Bragg peak",
+    "a Curie law"
+   ],
+   "answer": "b",
+   "explanation": "Spinons are created in pairs, so the two-particle states form a continuum."
+  },
+  {
+   "type": "mcq",
+   "question": "The QMC sign problem prevents",
+   "options": [
+    "Majorana MC for Kitaev",
+    "unbiased QMC for frustrated Heisenberg models",
+    "ED",
+    "DMRG"
+   ],
+   "answer": "b",
+   "explanation": "The Kitaev model is sign-free in the Majorana representation, so Majorana MC is exact up to statistics."
+  },
+  {
+   "type": "mcq",
+   "question": "In qslab FTLM, independent random vectors are distributed over",
+   "options": [
+    "they cannot be parallelised",
+    "GPUs only",
+    "BLAS",
+    "threads or MPI ranks via pmap"
+   ],
+   "answer": "d",
+   "explanation": "Embarrassingly parallel: R random vectors and all Sz sectors."
+  },
+  {
+   "type": "mcq",
+   "question": "Which parallel strategy suits a single huge ED matrix-vector product on one node?",
+   "options": [
+    "running more Lanczos vectors",
+    "shared-memory Numba 'pull' kernel (each thread owns output rows)",
+    "MPI over independent tasks",
+    "a process pool"
+   ],
+   "answer": "b",
+   "explanation": "The pull formulation needs no atomics; scipy CSR matvec is single-threaded."
+  },
+  {
+   "type": "numeric",
+   "question": "How many parameters does an RBM with alpha = 2 have for N = 16 spins?",
+   "answer": 560,
+   "tol": 0,
+   "explanation": "N + M + N M with M = 32: 16 + 32 + 512 = 560.",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "mcq",
+   "question": "DMRG entanglement on a cylinder of width W grows as",
+   "options": [
+    "S ~ W (area law), so chi ~ exp(W)",
+    "S ~ log L",
+    "S ~ W^2",
+    "S constant"
+   ],
+   "answer": "a",
+   "explanation": "That is why 2D DMRG is limited to W of about 10-12."
+  }
+ ]
+}

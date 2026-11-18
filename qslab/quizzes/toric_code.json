@@ -1,0 +1,87 @@
+{
+ "title": "Toric code / Z2 topological order",
+ "intro": "H = -Je sum_s A_s - Jm sum_p B_p on an L x L torus.",
+ "questions": [
+  {
+   "type": "numeric",
+   "question": "Ground-state energy of the L = 3 toric code (Je = Jm = 1)?",
+   "answer": -18,
+   "tol": 1e-06,
+   "explanation": "-(Je + Jm) L^2 = -18; every stabiliser is satisfied.",
+   "hint": "",
+   "code": "ED(*reversed(models.toric_code(3))...)"
+  },
+  {
+   "type": "numeric",
+   "question": "Ground-state degeneracy on the torus?",
+   "answer": 4,
+   "tol": 0,
+   "explanation": "4 = |anyon types|: Wilson loops along both cycles take values +-1.",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "numeric",
+   "question": "Ground-state degeneracy on a genus-2 surface?",
+   "answer": 16,
+   "tol": 0,
+   "explanation": "4^g for a Z2 gauge theory.",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "numeric",
+   "question": "Energy of the lowest excitation (Je = Jm = 1)?",
+   "answer": 4,
+   "tol": 1e-06,
+   "explanation": "Anyons come in pairs; each violated stabiliser costs 2, so the lowest e-pair costs 4.",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "numeric",
+   "question": "Topological entanglement entropy gamma (in nats)?",
+   "answer": 0.6931,
+   "tol": 0.001,
+   "explanation": "gamma = ln D with total quantum dimension D = 2 for Z2: ln 2.",
+   "hint": "",
+   "code": "tc, st = stabilizer.toric_code_ground_state(12); stabilizer.topological_entropy(st, *stabilizer.kitaev_preskill_regions(tc))"
+  },
+  {
+   "type": "mcq",
+   "question": "Why does the Kitaev-Preskill combination S_A+S_B+S_C-S_AB-S_BC-S_CA+S_ABC isolate -gamma?",
+   "options": [
+    "It vanishes for all states",
+    "It is the mutual information",
+    "Boundary (area-law) and corner contributions cancel by inclusion-exclusion",
+    "It counts Bell pairs"
+   ],
+   "answer": "c",
+   "explanation": "Every boundary segment appears with alternating signs; only the topological constant survives."
+  },
+  {
+   "type": "mcq",
+   "question": "Which is the e-particle (charge) of the toric code?",
+   "options": [
+    "a magnon",
+    "violated star A_s = -1",
+    "violated plaquette B_p = -1",
+    "a Majorana fermion"
+   ],
+   "answer": "b",
+   "explanation": "Charges are star violations created by Z strings; fluxes (m) are plaquette violations created by X strings on the dual lattice. e x m = fermion."
+  },
+  {
+   "type": "mcq",
+   "question": "A large uniform field h_z eventually",
+   "options": [
+    "confines e particles (Higgs/confinement transition)",
+    "doubles the degeneracy",
+    "does nothing",
+    "makes the code chiral"
+   ],
+   "answer": "a",
+   "explanation": "The field gives anyons kinetic energy; they condense near h ~ 0.33 (3D-Ising* transition). Try it with ED on L = 3 by watching the splitting of the 4 states."
+  }
+ ]
+}

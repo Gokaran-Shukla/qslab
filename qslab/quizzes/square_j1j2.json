@@ -1,0 +1,57 @@
+{
+ "title": "Square J1-J2 model and benchmarks",
+ "intro": "",
+ "questions": [
+  {
+   "type": "numeric",
+   "question": "ED ground-state energy per site of the 4x4 Heisenberg AFM (J2 = 0)?",
+   "answer": -0.70178,
+   "tol": 1e-05,
+   "explanation": "",
+   "hint": "",
+   "code": "ED(models.heisenberg(lattice.square(4)), 16).ground_state()[0]/16"
+  },
+  {
+   "type": "numeric",
+   "question": "Same at the maximally frustrated point J2 = 0.5?",
+   "answer": -0.52862,
+   "tol": 1e-05,
+   "explanation": "",
+   "hint": "",
+   "code": ""
+  },
+  {
+   "type": "numeric",
+   "question": "Exact energy per site of the Gutzwiller-projected pi-flux state on 4x4 (antiperiodic spinon BCs)?",
+   "answer": -0.63773,
+   "tol": 0.0002,
+   "explanation": "Its overlap with the true ground state is 0.85.",
+   "hint": "",
+   "code": "SpinonAnsatz.from_flux(lattice.square(4), {'square': np.pi}, twist=(0, np.pi)) + projected_state"
+  },
+  {
+   "type": "mcq",
+   "question": "Why does an RBM need the Marshall sign on the square lattice but struggles on kagome?",
+   "options": [
+    "The bipartite AFM ground state has a known sign rule; frustrated lattices do not",
+    "RBMs cannot be complex",
+    "Because of Sz conservation",
+    "No reason"
+   ],
+   "answer": "a",
+   "explanation": "Marshall: sign = (-1)^(number of down spins on sublattice A). No such rule exists for frustrated magnets."
+  },
+  {
+   "type": "mcq",
+   "question": "Which phase is believed to lie at 0.45 < J2 < 0.6?",
+   "options": [
+    "ferromagnet",
+    "toric code",
+    "120-degree order",
+    "gapless spin liquid and/or plaquette VBS (debated)"
+   ],
+   "answer": "d",
+   "explanation": "Still actively debated."
+  }
+ ]
+}

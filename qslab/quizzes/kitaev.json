@@ -1,0 +1,120 @@
+{
+ "title": "Kitaev honeycomb model",
+ "intro": "H = -sum K_g sigma^g sigma^g on x, y, z bonds (Pauli units unless stated).",
+ "questions": [
+  {
+   "type": "mcq",
+   "question": "Which operators commute with the Kitaev Hamiltonian on every hexagon?",
+   "options": [
+    "sum_i sigma^z_i",
+    "S_i . S_j on z bonds",
+    "W_p = sigma^x sigma^y sigma^z sigma^x sigma^y sigma^z (outward bond labels)",
+    "S_tot^z"
+   ],
+   "answer": "c",
+   "explanation": "W_p uses on each vertex the Pauli of the bond pointing out of the hexagon; it commutes with every bond term, so the fluxes are conserved Z2 numbers."
+  },
+  {
+   "type": "mcq",
+   "question": "In Kitaev's representation sigma^a_j = i b^a_j c_j, what physical constraint must states satisfy?",
+   "options": [
+    "b^x b^y b^z c = 1 on every site (D_j = 1)",
+    "fermion number = N/2",
+    "u_jk = +1 on all bonds",
+    "sum_j c_j = 0"
+   ],
+   "answer": "a",
+   "explanation": "The Majorana space is 4-dimensional per site; D_j = 1 projects onto the 2 physical states. qslab enforces prod_j D_j = 1 exactly (Pfaffian parity)."
+  },
+  {
+   "type": "mcq",
+   "question": "Lieb's theorem implies the ground state of the Kitaev model lies in which flux sector (for large clusters)?",
+   "options": [
+    "W_p = -1 on all plaquettes",
+    "W_p = +1 on all plaquettes (flux-free)",
+    "alternating fluxes",
+    "random fluxes"
+   ],
+   "answer": "b",
+   "explanation": "Flux-free. Tiny clusters can violate this, e.g. 2x2 where the ED ground state has W_p = -1."
+  },
+  {
+   "type": "numeric",
+   "question": "Ground-state energy per site of the isotropic Kitaev model (K = 1, Pauli units) in the thermodynamic limit?",
+   "answer": -0.7873,
+   "tol": 0.0002,
+   "explanation": "-0.78730 per site (-1.5746 per unit cell).",
+   "hint": "integrate -1/2 eps(k) over the BZ",
+   "code": "from qslab.kitaev import kitaev_energy_tl\nkitaev_energy_tl(nk=200)"
+  },
+  {
+   "type": "numeric",
+   "question": "Same model written with spin operators, H = K sum S^g S^g (|K| = 1): energy per site?",
+   "answer": -0.19682,
+   "tol": 0.0003,
+   "explanation": "S = sigma/2 so energies divide by 4: -0.7873/4 = -0.1968.",
+   "hint": "",
+   "code": "kitaev_energy_tl()/4"
+  },
+  {
+   "type": "numeric",
+   "question": "Exact ground-state energy per site of the 18-site (3x3 cells) torus, K = 1?",
+   "answer": -0.79397,
+   "tol": 2e-05,
+   "explanation": "ED and the projected Majorana solution agree: -14.29150/18.",
+   "hint": "",
+   "code": "km = KitaevMajorana(lattice.honeycomb(3,3)); km.ground_state_energy()/18"
+  },
+  {
+   "type": "numeric",
+   "question": "Nearest-neighbour correlation <sigma^g_i sigma^g_j> on a g-bond (isotropic, TL)?",
+   "answer": 0.5249,
+   "tol": 0.002,
+   "explanation": "Hellmann-Feynman: E/N = -(3/2) K <sigma sigma>, so <sigma sigma> = 0.7873/1.5. All further-neighbour spin correlations vanish exactly.",
+   "hint": "",
+   "code": "KitaevMajorana(lattice.honeycomb(20,20)).bond_correlations()"
+  },
+  {
+   "type": "numeric",
+   "question": "Energy cost of a pair of adjacent visons (flip one u_jk), isotropic K = 1, large cluster?",
+   "answer": 0.265,
+   "tol": 0.01,
+   "explanation": "~0.26 K: the flux gap is small compared with the Majorana bandwidth (6 K).",
+   "hint": "",
+   "code": "KitaevMajorana(lattice.honeycomb(20,20)).vison_pair_energy()"
+  },
+  {
+   "type": "mcq",
+   "question": "For (Kx, Ky, Kz) = (0.2, 0.2, 1) the system is in",
+   "options": [
+    "a chiral phase",
+    "a Neel state",
+    "the gapless B phase",
+    "a gapped A_z phase equivalent to the toric code"
+   ],
+   "answer": "d",
+   "explanation": "|Kz| > |Kx| + |Ky| violates the triangle inequality: Majoranas gap out and 4th-order perturbation theory gives the toric code."
+  },
+  {
+   "type": "mcq",
+   "question": "Adding the 3-spin term kappa (from a [111] magnetic field) to the B phase gives",
+   "options": [
+    "a ferromagnet",
+    "nothing: kappa commutes trivially",
+    "a gapped chiral phase with Majorana Chern number +-1 (Ising anyons)",
+    "a trivial paramagnet"
+   ],
+   "answer": "c",
+   "explanation": "kappa opens a Majorana gap Delta ~ 6 sqrt(3) kappa; Chern number +-1 means half-quantised thermal Hall kappa_xy/T = (pi/12) k_B^2/hbar."
+  },
+  {
+   "type": "numeric",
+   "question": "Entropy per site on the plateau between the two specific-heat peaks (fraction of ln 2)?",
+   "answer": 0.5,
+   "tol": 0.05,
+   "explanation": "Itinerant Majoranas freeze out at T_H ~ 1.5 K (Pauli units; 0.375 J in spin units with J = 4K), but the Z2 fluxes only order at T_L ~ 0.05 K (0.012 J): half of ln 2 survives in between.",
+   "hint": "",
+   "code": "majorana_monte_carlo(L=4)['S']/np.log(2)"
+  }
+ ]
+}

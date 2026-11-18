@@ -1,0 +1,72 @@
+{
+ "title": "Generalised Kitaev materials (J-K-Gamma-Gamma')",
+ "intro": "alpha-RuCl3, Na2IrO3, Co-based honeycombs.",
+ "questions": [
+  {
+   "type": "mcq",
+   "question": "What microscopic mechanism produces bond-dependent Kitaev exchange?",
+   "options": [
+    "Weak SOC",
+    "Direct exchange only",
+    "Strong spin-orbit coupling, j_eff = 1/2, edge-sharing octahedra with 90-degree M-X-M bonds",
+    "Dipolar coupling"
+   ],
+   "answer": "c",
+   "explanation": "Jackeli-Khaliullin: the two exchange paths cancel the Heisenberg part and leave K."
+  },
+  {
+   "type": "mcq",
+   "question": "Sign of K in alpha-RuCl3 (spin units, H = K S S)?",
+   "options": [
+    "zero",
+    "ferromagnetic, K < 0",
+    "antiferromagnetic, K > 0",
+    "it depends on the field direction"
+   ],
+   "answer": "b",
+   "explanation": "K ~ -5 to -10 meV, with Gamma > 0."
+  },
+  {
+   "type": "numeric",
+   "question": "ED energy per site of the 12-site cluster with (J, K, Gamma, Gamma', J3) = (-0.1, -1, 0.5, -0.025, 0.1)?",
+   "answer": -0.38088,
+   "tol": 2e-05,
+   "explanation": "",
+   "hint": "",
+   "code": "models.kitaev_heisenberg_gamma(lattice.honeycomb(2,3), J=-0.1, K=-1, Gamma=0.5, Gamma_p=-0.025, J3=0.1)"
+  },
+  {
+   "type": "mcq",
+   "question": "What does the zero-field ground state of alpha-RuCl3 show?",
+   "options": [
+    "a spin liquid",
+    "Neel order",
+    "zigzag order (T_N ~ 7 K)",
+    "ferromagnetism"
+   ],
+   "answer": "c",
+   "explanation": "Zigzag; a field of about 7-8 T in-plane suppresses it, and the resulting state is debated (proximate Kitaev spin liquid?)."
+  },
+  {
+   "type": "mcq",
+   "question": "Which DMRG requirement does the Gamma term change?",
+   "options": [
+    "it makes the MPO complex because of the S^x S^y terms",
+    "it breaks the MPO",
+    "nothing",
+    "it requires 3-site terms"
+   ],
+   "answer": "a",
+   "explanation": "qslab writes sigma^y as -i times a real matrix; with an odd number of y's per term the MPO is complex."
+  },
+  {
+   "type": "numeric",
+   "question": "Ground-state energy per site of the pure FM Kitaev model in spin units (K = -1) on 12 sites?",
+   "answer": -0.20417,
+   "tol": 2e-05,
+   "explanation": "FM and AFM Kitaev models are related by a unitary sublattice rotation, so their spectra are identical.",
+   "hint": "",
+   "code": ""
+  }
+ ]
+}
