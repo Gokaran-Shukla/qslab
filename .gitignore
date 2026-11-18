@@ -1,0 +1,12 @@
+__pycache__/
+*.egg-info/
+.pytest_cache/
+docs/slides/*.aux
+docs/slides/*.log
+docs/slides/*.nav
+docs/slides/*.out
+docs/slides/*.snm
+docs/slides/*.toc
+docs/slides/*.vrb
+docs/slides/*.fls
+docs/slides/*.fdb_latexmk

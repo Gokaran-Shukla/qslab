@@ -98,6 +98,10 @@ pytest                           # 21 benchmark tests
 7. `07_kitaev_materials_JKGamma`: RuCl₃-like parameters, field scans, complex-MPO DMRG, the DFT → model workflow
 8. `08_dynamics_thermodynamics`: S(q, ω) continua, spinon continuum, FTLM C(T), S(T), χ(T)
 
+## Slides
+
+A Beamer overview with colour-coded equations is in [`docs/slides/qslab_slides.pdf`](docs/slides/qslab_slides.pdf). The source is `qslab_slides.tex`, and `make_figures.py` regenerates every figure with qslab.
+
 ## Quizzes
 
 ```python
