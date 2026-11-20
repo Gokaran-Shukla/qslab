@@ -9,6 +9,7 @@ if len(sys.argv) > 1:
     srcs = [s for s in srcs if any(k in s for k in sys.argv[1:])]
 for src in srcs:
     nb = jupytext.read(src)
+    nb.cells.insert(0, nbformat.v4.new_markdown_cell("<!-- gs-watermark -->\n> **© 2026 Gokaran Shukla** · part of [qslab](https://github.com/Gokaran-Shukla/qslab) · MIT License — any reuse must keep this copyright notice and credit the author."))
     nb.metadata["kernelspec"] = {"name": "python3", "display_name": "Python 3", "language": "python"}
     out = os.path.join(root, os.path.basename(src).replace(".py", ".ipynb"))
     t = time.time()

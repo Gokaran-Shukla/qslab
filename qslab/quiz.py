@@ -29,6 +29,9 @@ import os
 import sys
 from typing import Any, Dict, List
 
+_GS_NOTICE = "© 2026 Gokaran Shukla · github.com/Gokaran-Shukla/qslab · MIT License"  # gs-watermark
+
+
 _DIR = os.path.join(os.path.dirname(__file__), "quizzes")
 
 __all__ = ["topics", "load", "show", "check", "run", "solutions", "main"]
@@ -60,6 +63,7 @@ def _fmt_q(n: int, q: dict) -> str:
 
 def show(topic: str):
     data = load(topic)
+    print(_GS_NOTICE)
     print(f"=== {data['title']} ===\n{data.get('intro', '')}\n")
     for n, q in enumerate(data["questions"], 1):
         print(_fmt_q(n, q) + "\n")
@@ -97,6 +101,7 @@ def solutions(topic: str):
 def run(topic: str, input_fn=input) -> float:
     """Interactive quiz; returns the score fraction."""
     data = load(topic)
+    print(_GS_NOTICE)
     print(f"=== {data['title']} ===\n{data.get('intro', '')}\n"
           "(type 'skip' to skip, 'quit' to stop)\n")
     score, asked = 0, 0
