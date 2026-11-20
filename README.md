@@ -1,5 +1,7 @@
 # qslab: Quantum Spin Liquid Laboratory
 
+📘 **Complete manual (PDF):** [docs/qslab_manual.pdf](docs/qslab_manual.pdf) — documentation, tutorials and quizzes in one file.
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24334571.svg)](https://doi.org/10.5281/zenodo.24334571)
 
 A Python toolkit for simulating quantum spin liquids with complementary many-body
